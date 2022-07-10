@@ -53,14 +53,14 @@ var questions = [
     answerFour: "d. b & c",
     correct: "d"
     },
-    //Duplicated previous question to end quiz
+    // Duplicated previous question to end quiz
     {question: 'What is the proper notation used to extract the assigned value of a property in an object?',
     answerOne: 'a. object[.property]',
     answerTwo: 'b. object["property"]',
     answerThree: 'c. object.property',
     answerFour: "d. b & c",
     correct: "d"
-    },
+    }
 ]
 //Declare index number of first question and initial number of right answers
 var questionNumber = 0;
@@ -78,6 +78,7 @@ init();
 
 //Timer function
 function countdown() {
+    timerEl.textContent = "30 seconds left";
     var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
         timerEl.textContent = timeLeft + " seconds left";
@@ -86,11 +87,11 @@ function countdown() {
         timerEl.textContent = timeLeft + " second left";
         timeLeft--;
     }
-    //Quiz skips to results screen if timer hits 0 or the final question is answered before time runs out  
+    
     if (timeLeft === 0 || questions.length === questionNumber + 1) {
+        showResults();
         clearInterval(timeInterval);
         timerEl.textContent = "Time is up! The quiz is over."
-        showResults();
     }
   }, 1000);
 }
@@ -130,7 +131,7 @@ function checkAnswer(answer) {
         showResults();
         return;
     }
-    //Move on to next question regardless of whether answer is right or wrong
+     //Move on to next question regardless of whether answer is right or wrong
     questionNumber++;
     displayQuestion();
 }
@@ -138,9 +139,10 @@ function checkAnswer(answer) {
 function showResults () {
     //Removes quiz content
     quizEl.style.display = "none";
-    resultsEl.style.display = "block";
     //Displays final results below
-    if (timeLeft === 0 || questions.length + 1) {
+    resultsEl.style.display = "block";
+
+    if (timeLeft === 0 || questions.length - 1) {
     finalScoreEl.textContent = "Your final score is " + correctAnswers + " out of 5.";
     }
 };
