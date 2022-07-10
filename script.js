@@ -76,6 +76,25 @@ function init() {
 
 init();
 
+//Timer function
+function countdown() {
+    var timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+        timerEl.textContent = timeLeft + " seconds left";
+        timeLeft--;
+    } else if (timeLeft === 1) {
+        timerEl.textContent = timeLeft + " second left";
+        timeLeft--;
+    }
+    //Quiz skips to results screen if timer hits 0 or the final question is answered before time runs out  
+    else if (timeLeft === 0 || questions.length === questionNumber + 1) {
+        clearInterval(timeInterval);
+        timerEl.textContent = "Time is up! The quiz is over."
+        showResults();
+    }
+  }, 1000);
+}
+
 function beginQuiz() {
     countdown();
     //Remove intro blurb and start button once start button is clicked
@@ -114,25 +133,6 @@ function checkAnswer(answer) {
     //Move on to next question regardless of whether answer is right or wrong
     questionNumber++;
     displayQuestion();
-}
-
-//Timer function
-function countdown() {
-    var timeInterval = setInterval(function () {
-    if (timeLeft > 1) {
-        timerEl.textContent = timeLeft + " seconds left";
-        timeLeft--;
-    } else if (timeLeft === 1) {
-        timerEl.textContent = timeLeft + " second left";
-        timeLeft--;
-    }
-    //Quiz skips to results screen if timer hits 0 or the final question is answered before time runs out  
-    if (timeLeft === 0 || questions.length === questionNumber + 1) {
-        clearInterval(timeInterval);
-        timerEl.textContent = "Time is up! The quiz is over."
-        showResults();
-    }
-  }, 1000);
 }
 
 function showResults () {
