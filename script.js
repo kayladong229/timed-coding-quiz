@@ -71,7 +71,7 @@ function init() {
     introEl.style.display = "block";
     quizEl.style.display = "none";
     resultsEl.style.display = "none";
-    timerEl.textContent = ""
+    timerEl.textContent = "";
 }
 
 init();
