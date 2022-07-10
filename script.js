@@ -53,6 +53,14 @@ var questions = [
     answerFour: "d. b & c",
     correct: "d"
     },
+    //Duplicated previous question to end quiz
+    {question: 'What is the proper notation used to extract the assigned value of a property in an object?',
+    answerOne: 'a. object[.property]',
+    answerTwo: 'b. object["property"]',
+    answerThree: 'c. object.property',
+    answerFour: "d. b & c",
+    correct: "d"
+    },
 ]
 //Declare index number of first question and initial number of right answers
 var questionNumber = 0;
@@ -79,7 +87,7 @@ function countdown() {
         timeLeft--;
     }
     //Quiz skips to results screen if timer hits 0 or the final question is answered before time runs out  
-    else if (timeLeft === 0 || questions.length === questionNumber + 1) {
+    if (timeLeft === 0 || questions.length === questionNumber + 1) {
         clearInterval(timeInterval);
         timerEl.textContent = "Time is up! The quiz is over."
         showResults();
@@ -132,8 +140,9 @@ function showResults () {
     quizEl.style.display = "none";
     resultsEl.style.display = "block";
     //Displays final results below
+    if (timeLeft === 0 || questions.length + 1) {
     finalScoreEl.textContent = "Your final score is " + correctAnswers + " out of 5.";
-
+    }
 };
 
 function saveLastScore() {
