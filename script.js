@@ -97,6 +97,7 @@ function countdown() {
 }
 
 function beginQuiz() {
+    // Start timer
     countdown();
     //Remove intro blurb and start button once start button is clicked
     introEl.style.display = "none";
