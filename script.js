@@ -53,14 +53,6 @@ var questions = [
     answerFour: "d. b & c",
     correct: "d"
     },
-    // Duplicated previous question for quiz to end
-    {question: 'What is the proper notation used to extract the assigned value of a property in an object?',
-    answerOne: 'a. object[.property]',
-    answerTwo: 'b. object["property"]',
-    answerThree: 'c. object.property',
-    answerFour: "d. b & c",
-    correct: "d"
-    }
 ]
 //Declare index number of first question and initial number of right answers
 var questionNumber = 0;
