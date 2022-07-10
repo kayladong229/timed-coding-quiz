@@ -62,6 +62,9 @@ var questions = [
     correct: "d"
     }
 ]
+//Declare index number of first question and initial number of right answers
+var questionNumber = 0;
+var correctAnswers = 0;
 
 // Hide final score form and quiz when page initially loads
 function init() {
@@ -83,10 +86,6 @@ function beginQuiz() {
 }
 
 startBtn.addEventListener("click", beginQuiz)
-
-//Declare index number of first question and initial number of right answers
-var questionNumber = 0;
-var correctAnswers = 0;
 
 //Render content to webpage according to question index number
 function displayQuestion() {
