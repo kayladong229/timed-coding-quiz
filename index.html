@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to css file -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Timed Coding Quiz</title>
 </head>
 <body>
+    <header>
+        <h1>Coding Quiz</h1>
+        <h2 id="timer"></h2>
+    </header>
+
+    <main class = "container">
+        <!-- Initial page -->
+        <section id="intro">
+         <p>You have 30 seconds to answer 5 multiple-choice coding questions. Each question you get incorrect will dock 5 seconds off of your remaining time. Good luck.</p>
+         <button class="start-button">Start</button>
+        </section>
+
+        <!-- Main content -->
+        <section id="quiz">
+            <div class="question"></div>
+            <div class="answers">
+                <ul>
+                 <li><button class="answer-1" onclick="checkAnswer('a')"></button></li>
+                 <li><button class="answer-2" onclick="checkAnswer('b')"></button></li>
+                 <li><button class="answer-3" onclick="checkAnswer('c')"></button></li>
+                 <li><button class="answer-4" onclick="checkAnswer('d')"></button></li>
+                </ul>
+            </div>
+            <div id="answerOutput"></div>
+        </section>
+
+        <!-- Results screen -->
+        <section id="results">
+            <span id="finalscore"></span>
+            <form>
+                <label>Enter your initials here:</label>
+                <input type ="text" name="initials" id="initials" placeholder = "first and last initials">
+                <button id="submit-button">Submit</button>
+            </form>
+            <p><strong>Initials:</strong><span id="saved-user-initials"></span></p>
+            <p><strong>Score:</strong><span id="saved-user-score"></span></p>
+            <h3><span id="message"></span></h3>
+            <button id="restart-button">Start Over</button>
+            <button id="clear-button">Clear Score</button>
+        </section>
+        
+    </main> 
+    <!-- Link to js file -->
     <script src="script.js"></script>
 </body>
 </html>
