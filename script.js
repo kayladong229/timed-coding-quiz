@@ -53,18 +53,15 @@ var questions = [
     answerFour: "d. b & c",
     correct: "d"
     },
-    // Duplicated previous question to end quiz
-    {question: 'What is the proper notation used to extract the assigned value of a property in an object?',
-    answerOne: 'a. object[.property]',
-    answerTwo: 'b. object["property"]',
-    answerThree: 'c. object.property',
-    answerFour: "d. b & c",
-    correct: "d"
-    }
 ]
+
 //Declare index number of first question and initial number of right answers
-var questionNumber = 0;
-var correctAnswers = 0;
+let questionNumber = 0;
+let correctAnswers = 0;
+introEl.style.display = "block";
+quizEl.style.display = "none";
+resultsEl.style.display = "none";
+timerEl.textContent = "";
 
 // Hide final score form and quiz when page initially loads
 function init() {
@@ -72,15 +69,14 @@ function init() {
     quizEl.style.display = "none";
     resultsEl.style.display = "none";
     timerEl.textContent = "";
-    var questionNumber = 0;
+    questionNumber = 0;
 }
 
-init();
-
+var timeInterval
 //Timer function
 function countdown() {
     timerEl.textContent = "30 seconds left";
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
     if (timeLeft > 1) {
         timerEl.textContent = timeLeft + " seconds left";
         timeLeft--;
@@ -89,7 +85,7 @@ function countdown() {
         timeLeft--;
     }
     
-    if (timeLeft === 0 || timeLeft < 0 || questions.length === questionNumber + 1) {
+    if (timeLeft === 0 || timeLeft < 0) {
         showResults();
         clearInterval(timeInterval);
         timerEl.textContent = "Time is up! The quiz is over."
@@ -98,6 +94,7 @@ function countdown() {
 }
 
 function beginQuiz() {
+    init();
     // Start timer
     countdown();
     //Remove intro blurb and start button once start button is clicked
@@ -111,15 +108,26 @@ startBtn.addEventListener("click", beginQuiz)
 
 //Render content to webpage according to question index number
 function displayQuestion() {
-    var currentQuestion = questions[questionNumber];
+    let currentQuestion = questions[questionNumber];
     questionEl.innerHTML = currentQuestion.question;
     answerOne.innerHTML = currentQuestion.answerOne;
     answerTwo.innerHTML = currentQuestion.answerTwo;
     answerThree.innerHTML = currentQuestion.answerThree;
     answerFour.innerHTML = currentQuestion.answerFour;
+    answerOne.addEventListener("click", function() {
+        checkAnswer("a");
+    })
+    answerTwo.addEventListener("click", function() {
+        checkAnswer("b");
+    })
+    answerThree.addEventListener("click", function() {
+        checkAnswer("c");
+    })
+    answerFour.addEventListener("click", function() {
+        checkAnswer("d");
+    })
 };
 
-//Check answers
 function checkAnswer(answer) {
     if(questions[questionNumber].correct === answer) {
         answerOutput.textContent = "Correct!";
@@ -131,6 +139,8 @@ function checkAnswer(answer) {
     //Displays results once final question is answered regardless of how much time there is left in the quiz
     if (questions.length === questionNumber + 1) {
         showResults();
+        clearInterval(timeInterval);
+        questionNumber = 0;
         return;
     }
      //Move on to next question regardless of whether answer is right or wrong
@@ -143,7 +153,6 @@ function showResults () {
     quizEl.style.display = "none";
     //Displays final results below
     resultsEl.style.display = "block";
-
     if (timeLeft === 0 || questions.length - 1) {
     finalScoreEl.textContent = "Your final score is " + correctAnswers + " out of 5.";
     }
@@ -187,4 +196,4 @@ clearBtn.addEventListener("click", function() {
     document.getElementById("saved-user-score").innerHTML = "";
 })
 
-restartBtn.addEventListener("click", init)
+restartBtn.addEventListener("click", beginQuiz)
