@@ -136,13 +136,16 @@ function checkAnswer(answer) {
         answerOutput.textContent = "Incorrect.";
         timeLeft -= 5;
     }
-    //Displays results once final question is answered regardless of how much time there is left in the quiz
-    if (questions.length === questionNumber + 1) {
-        showResults();
-        return;
-    } 
     questionNumber++;
-    displayQuestion();
+    //Displays results once final question is answered regardless of how much time there is left in the quiz
+    if (questions.length < questionNumber + 1) {
+        showResults();
+        clearInterval(timeInterval);
+        timerEl.textContent = "Time is up! The quiz is over."
+        return;
+    } else {
+        displayQuestion();
+    }
 }
 
 function showResults () {
