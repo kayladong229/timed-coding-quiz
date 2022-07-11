@@ -54,7 +54,6 @@ var questions = [
     correct: "d"
     },
 ]
-
 //Declare index number of first question and initial number of right answers
 let questionNumber = 0;
 let correctAnswers = 0;
@@ -114,20 +113,21 @@ function displayQuestion() {
     answerTwo.innerHTML = currentQuestion.answerTwo;
     answerThree.innerHTML = currentQuestion.answerThree;
     answerFour.innerHTML = currentQuestion.answerFour;
-    answerOne.addEventListener("click", function() {
-        checkAnswer("a");
-    })
-    answerTwo.addEventListener("click", function() {
-        checkAnswer("b");
-    })
-    answerThree.addEventListener("click", function() {
-        checkAnswer("c");
-    })
-    answerFour.addEventListener("click", function() {
-        checkAnswer("d");
-    })
+    // answerOne.addEventListener("click", function() {
+    //     checkAnswer("a");
+    // });
+    // answerTwo.addEventListener("click", function() {
+    //     checkAnswer("b");
+    // });
+    // answerThree.addEventListener("click", function() {
+    //     checkAnswer("c");
+    // });
+    // answerFour.addEventListener("click", function() {
+    //     checkAnswer("d");
+    // });
 };
 
+// Check answers
 function checkAnswer(answer) {
     if(questions[questionNumber].correct === answer) {
         answerOutput.textContent = "Correct!";
@@ -139,11 +139,8 @@ function checkAnswer(answer) {
     //Displays results once final question is answered regardless of how much time there is left in the quiz
     if (questions.length === questionNumber + 1) {
         showResults();
-        clearInterval(timeInterval);
-        questionNumber = 0;
         return;
-    }
-     //Move on to next question regardless of whether answer is right or wrong
+    } 
     questionNumber++;
     displayQuestion();
 }
@@ -153,6 +150,7 @@ function showResults () {
     quizEl.style.display = "none";
     //Displays final results below
     resultsEl.style.display = "block";
+
     if (timeLeft === 0 || questions.length - 1) {
     finalScoreEl.textContent = "Your final score is " + correctAnswers + " out of 5.";
     }
