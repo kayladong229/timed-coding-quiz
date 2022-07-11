@@ -1,0 +1,82 @@
+:root {
+    --button-bg-color: royalblue;
+    --button-color: white;
+    --button-height: 30px;
+    --button-border-radius: 4px;
+}
+
+* {
+    background-color:beige;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color:darkcyan;
+    margin: -27px -20px 0 -20px;
+    padding: 5px;
+}
+
+header h1 {
+    margin-top: 25px;
+}
+
+header h1, h2 {
+    background-color: darkcyan;
+}
+
+#intro {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 230px;
+}
+
+#intro p {
+    margin-left: 15px;
+}
+
+.start-button, #submit-button {
+    background-color:var(--button-bg-color);
+    color: var(--button-color);
+    width: 80px;
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+}
+
+#quiz {
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.answers ul li {
+    list-style: none;
+}
+
+.answers ul li button {
+    text-align: center;
+    background-color:var(--button-bg-color);
+    color: var(--button-color);
+    width: 150px;
+    height: 60px;
+    border-radius: var(--button-border-radius);
+    margin: 15px;
+}
+
+#results {
+    margin-top: 25px;
+    padding: 10px;
+}
+
+#results form {
+    margin: 15px;
+}
+
+#restart-button, #clear-button {
+    background-color:var(--button-bg-color);
+    color: var(--button-color);
+    width: 100px;
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    padding: 2px;
+}
