@@ -72,6 +72,7 @@ function init() {
     quizEl.style.display = "none";
     resultsEl.style.display = "none";
     timerEl.textContent = "";
+    var questionNumber = 0;
 }
 
 init();
@@ -88,7 +89,7 @@ function countdown() {
         timeLeft--;
     }
     
-    if (timeLeft === 0 || questions.length === questionNumber + 1) {
+    if (timeLeft === 0 || timeLeft < 0 || questions.length === questionNumber + 1) {
         showResults();
         clearInterval(timeInterval);
         timerEl.textContent = "Time is up! The quiz is over."
@@ -187,5 +188,3 @@ clearBtn.addEventListener("click", function() {
 })
 
 restartBtn.addEventListener("click", init)
-
-
