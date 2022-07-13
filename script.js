@@ -62,7 +62,7 @@ quizEl.style.display = "none";
 resultsEl.style.display = "none";
 timerEl.textContent = "";
 
-// Hide final score form and quiz when page initially loads
+// Hide final score form and quiz and resets quiz variables when page initially loads
 function init() {
     introEl.style.display = "block";
     quizEl.style.display = "none";
@@ -115,18 +115,6 @@ function displayQuestion() {
     answerTwo.innerHTML = currentQuestion.answerTwo;
     answerThree.innerHTML = currentQuestion.answerThree;
     answerFour.innerHTML = currentQuestion.answerFour;
-    // answerOne.addEventListener("click", function() {
-    //     checkAnswer("a");
-    // });
-    // answerTwo.addEventListener("click", function() {
-    //     checkAnswer("b");
-    // });
-    // answerThree.addEventListener("click", function() {
-    //     checkAnswer("c");
-    // });
-    // answerFour.addEventListener("click", function() {
-    //     checkAnswer("d");
-    // });
 };
 
 // Check answers
@@ -194,9 +182,11 @@ submitBtn.addEventListener("click", function(event) {
 });
 
 clearBtn.addEventListener("click", function() {
+    //Clears information from local storage and initials and score fields
     localStorage.clear();
     document.getElementById("saved-user-initials").innerHTML = "";
     document.getElementById("saved-user-score").innerHTML = "";
 })
 
+//Goes back to the intro page when the "Start Over" button is clicked
 restartBtn.addEventListener("click", init)
