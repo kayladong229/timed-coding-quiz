@@ -26,10 +26,10 @@ var questions = [
     correct: "c"
     },
     {question: 'Select the most appropriate comparison operator to make the following statement true: 5 ___ "5".',
-    answerOne: "a. ===",
+    answerOne: "a. ==",
     answerTwo: "b. >=",
     answerThree: "c. <=",
-    answerFour: "d. ==",
+    answerFour: "d. ===",
     correct: "a"
     },
     {question: 'Given the array foods = ["sushi", "ramen", "curry rice"], which item in this array does foods[1] correspond to?',
