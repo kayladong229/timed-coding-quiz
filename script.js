@@ -69,6 +69,8 @@ function init() {
     resultsEl.style.display = "none";
     timerEl.textContent = "";
     questionNumber = 0;
+    timeLeft = 30;
+    correctAnswers = 0
 }
 
 var timeInterval
@@ -197,4 +199,4 @@ clearBtn.addEventListener("click", function() {
     document.getElementById("saved-user-score").innerHTML = "";
 })
 
-restartBtn.addEventListener("click", beginQuiz)
+restartBtn.addEventListener("click", init)
